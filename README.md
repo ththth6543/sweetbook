@@ -38,20 +38,22 @@
 
 Bash
 
-# 1. 가상환경 설정 및 의존성 설치
+## 1. 가상환경 설정 및 의존성 설치
 cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+python -m venv venv  
+source venv/bin/activate # Windows: venv\Scripts\activate  
+pip install -r requirements.txt  
 
-# 2. 환경변수 설정
+## 2. 환경변수 설정
 cp .env.example .env
-# .env 파일 내 SWEETBOOK_API_KEY를 입력하세요.
 
-# 3. 서버 실행
+### .env 파일 내 SWEETBOOK_API_KEY를 입력하세요.  
+
+
+## 3. 서버 실행
 uvicorn main:app --reload`
 
-### **[Frontend] Flutter**
+## **[Frontend] Flutter**
 
 Bash
 
