@@ -38,7 +38,7 @@
 
 Bash
 
-`# 1. 가상환경 설정 및 의존성 설치
+# 1. 가상환경 설정 및 의존성 설치
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -55,7 +55,7 @@ uvicorn main:app --reload`
 
 Bash
 
-`# 1. 패키지 설치
+# 1. 패키지 설치
 cd frontend
 flutter pub get
 
