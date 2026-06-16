@@ -86,7 +86,7 @@ class _CreateBookWizardState extends ConsumerState<CreateBookWizard> {
           _isLoading
               ? const Center(child: LinearProgressIndicator())
               : DropdownButtonFormField<String>(
-                  value: _selectedSpecUid,
+                  initialValue: _selectedSpecUid,
                   items: _specs.map<DropdownMenuItem<String>>((spec) {
                     return DropdownMenuItem<String>(
                       value: spec['bookSpecUid'],

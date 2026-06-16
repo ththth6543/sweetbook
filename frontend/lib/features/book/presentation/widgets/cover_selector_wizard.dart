@@ -80,7 +80,7 @@ class _CoverSelectorWizardState extends State<CoverSelectorWizard> {
         }
       }
     } catch (e) {
-      print('Error mapping template fields: $e');
+      debugPrint('Error mapping template fields: $e');
       _dynamicFields = [
         TemplateField(
           "title",
@@ -433,8 +433,9 @@ class _CoverSelectorWizardState extends State<CoverSelectorWizard> {
                                 final img = await _picker.pickImage(
                                   source: ImageSource.gallery,
                                 );
-                                if (img != null)
+                                if (img != null) {
                                   setState(() => _imageFiles[key] = img);
+                                }
                               },
                               child: Container(
                                 height: 150,

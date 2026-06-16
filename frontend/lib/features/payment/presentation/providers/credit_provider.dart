@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/core/network/api_service.dart';
 
@@ -17,7 +18,7 @@ class UserCreditNotifier extends AsyncNotifier<int> {
       }
       return 0;
     } catch (e) {
-      print('Error fetching balance: $e');
+      debugPrint('Error fetching balance: $e');
       return 0;
     }
   }
@@ -64,7 +65,7 @@ class CreditTransactionsNotifier extends AsyncNotifier<List<dynamic>> {
       }
       return [];
     } catch (e) {
-      print('Error fetching transactions: $e');
+      debugPrint('Error fetching transactions: $e');
       return [];
     }
   }

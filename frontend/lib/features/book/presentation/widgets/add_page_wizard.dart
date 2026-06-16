@@ -111,7 +111,7 @@ class _AddPageWizardState extends ConsumerState<AddPageWizard> {
         }
       }
     } catch (e) {
-      print('Error mapping template fields: $e');
+      debugPrint('Error mapping template fields: $e');
       _dynamicFields = [
         TemplateField(
           "contents",

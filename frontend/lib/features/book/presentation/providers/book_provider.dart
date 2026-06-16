@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/features/book/domain/models/book.dart';
 import 'package:frontend/core/network/api_service.dart';
@@ -46,7 +47,7 @@ class BookListNotifier extends AsyncNotifier<List<TravelBook>> {
       
       return newBook;
     } catch (e) {
-      print('Failed to create book: $e');
+      debugPrint('Failed to create book: $e');
       return null;
     }
   }
@@ -60,7 +61,7 @@ class BookListNotifier extends AsyncNotifier<List<TravelBook>> {
       
       return true;
     } catch (e) {
-      print('Failed to delete book: $e');
+      debugPrint('Failed to delete book: $e');
       return false;
     }
   }

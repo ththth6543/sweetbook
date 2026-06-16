@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/features/travel_log/domain/models/travel_log.dart';
 import 'package:frontend/features/book/domain/models/book.dart';
@@ -18,7 +19,7 @@ class ApiService {
       final response = await _dio.get('/logs/');
       return (response.data as List).map((e) => TravelLog.fromJson(e)).toList();
     } catch (e) {
-      print('Error fetching logs: $e');
+      debugPrint('Error fetching logs: $e');
       rethrow;
     }
   }
@@ -28,7 +29,7 @@ class ApiService {
       final response = await _dio.post('/logs/', data: log.toJson());
       return TravelLog.fromJson(response.data);
     } catch (e) {
-      print('Error creating log: $e');
+      debugPrint('Error creating log: $e');
       rethrow;
     }
   }
@@ -37,7 +38,7 @@ class ApiService {
     try {
       await _dio.delete('/logs/$id');
     } catch (e) {
-      print('Error deleting log: $id, $e');
+      debugPrint('Error deleting log: $id, $e');
       rethrow;
     }
   }
@@ -50,7 +51,7 @@ class ApiService {
           .map((e) => TravelBook.fromJson(e))
           .toList();
     } catch (e) {
-      print('Error fetching books: $e');
+      debugPrint('Error fetching books: $e');
       rethrow;
     }
   }
@@ -63,7 +64,7 @@ class ApiService {
       if (data is Map && data['items'] is List) return data['items'];
       return [];
     } catch (e) {
-      print('Error fetching specs: $e');
+      debugPrint('Error fetching specs: $e');
       return [];
     }
   }
@@ -76,7 +77,7 @@ class ApiService {
     int offset = 0,
   }) async {
     try {
-      print(
+      debugPrint(
         'Fetching templates for Spec: $specUid, Kind: $kind, Scope: $scope',
       );
       final response = await _dio.get(
@@ -91,14 +92,14 @@ class ApiService {
       );
 
       final dynamic rawData = response.data['data'];
-      print('Raw Template Response Type: ${rawData.runtimeType}');
+      debugPrint('Raw Template Response Type: ${rawData.runtimeType}');
 
       if (rawData == null) {
-        print('Warning: Template data is null from server');
+        debugPrint('Warning: Template data is null from server');
         return [];
       }
 
-      print(
+      debugPrint(
         'Raw Template Response Count: ${rawData is List ? rawData.length : (rawData is Map ? (rawData['items']?.length ?? "0 (items null)") : "Unknown")}',
       );
 
@@ -107,7 +108,7 @@ class ApiService {
 
       return [];
     } catch (e) {
-      print('Error fetching templates: $e');
+      debugPrint('Error fetching templates: $e');
       return [];
     }
   }
@@ -117,7 +118,7 @@ class ApiService {
       final response = await _dio.get('/books/templates/$templateUid');
       return response.data;
     } catch (e) {
-      print('Error fetching template details: $e');
+      debugPrint('Error fetching template details: $e');
       rethrow;
     }
   }
@@ -144,7 +145,7 @@ class ApiService {
       );
       return TravelBook.fromJson(response.data);
     } catch (e) {
-      print('Error creating book: $e');
+      debugPrint('Error creating book: $e');
       rethrow;
     }
   }
@@ -164,7 +165,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error updating cover: $e');
+      debugPrint('Error updating cover: $e');
       rethrow;
     }
   }
@@ -181,7 +182,7 @@ class ApiService {
       final response = await _dio.post('/books/$bookId/photos', data: formData);
       return response.data;
     } catch (e) {
-      print('Error uploading photo: $e');
+      debugPrint('Error uploading photo: $e');
       rethrow;
     }
   }
@@ -203,7 +204,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error adding page: $e');
+      debugPrint('Error adding page: $e');
       rethrow;
     }
   }
@@ -225,7 +226,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error updating page: $e');
+      debugPrint('Error updating page: $e');
       rethrow;
     }
   }
@@ -234,7 +235,7 @@ class ApiService {
     try {
       await _dio.delete('/books/$bookId/pages/$pageId');
     } catch (e) {
-      print('Error deleting page: $e');
+      debugPrint('Error deleting page: $e');
       rethrow;
     }
   }
@@ -243,7 +244,7 @@ class ApiService {
     try {
       await _dio.put('/books/$bookId/pages/reorder', data: pageIds);
     } catch (e) {
-      print('Error reordering pages: $e');
+      debugPrint('Error reordering pages: $e');
       rethrow;
     }
   }
@@ -252,7 +253,7 @@ class ApiService {
     try {
       await _dio.post('/books/$bookId/finalization');
     } catch (e) {
-      print('Error finalizing book: $e');
+      debugPrint('Error finalizing book: $e');
       rethrow;
     }
   }
@@ -261,7 +262,7 @@ class ApiService {
     try {
       await _dio.delete('/books/$id');
     } catch (e) {
-      print('Error deleting book: $id, $e');
+      debugPrint('Error deleting book: $id, $e');
       rethrow;
     }
   }
@@ -277,7 +278,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error getting bulk estimate: $e');
+      debugPrint('Error getting bulk estimate: $e');
       rethrow;
     }
   }
@@ -293,7 +294,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error creating bulk order: $e');
+      debugPrint('Error creating bulk order: $e');
       rethrow;
     }
   }
@@ -309,7 +310,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error getting estimate: $e');
+      debugPrint('Error getting estimate: $e');
       rethrow;
     }
   }
@@ -326,7 +327,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error creating order: $e');
+      debugPrint('Error creating order: $e');
       rethrow;
     }
   }
@@ -365,7 +366,7 @@ class ApiService {
       final response = await _dio.get('/orders/credits');
       return response.data;
     } catch (e) {
-      print('Error fetching credits: $e');
+      debugPrint('Error fetching credits: $e');
       rethrow;
     }
   }
@@ -381,7 +382,7 @@ class ApiService {
       );
       return response.data;
     } catch (e) {
-      print('Error fetching orders: $e');
+      debugPrint('Error fetching orders: $e');
       rethrow;
     }
   }
@@ -391,7 +392,7 @@ class ApiService {
       final response = await _dio.get('/orders/$orderUid');
       return response.data;
     } catch (e) {
-      print('Error fetching order details: $e');
+      debugPrint('Error fetching order details: $e');
       rethrow;
     }
   }

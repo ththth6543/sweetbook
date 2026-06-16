@@ -85,7 +85,7 @@ class CreditHistoryPage extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.02),
+                      color: Colors.black.withAlpha(5),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),

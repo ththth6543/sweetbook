@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:frontend/core/network/api_service.dart';
 
@@ -22,7 +23,7 @@ class OrderHistoryNotifier extends AsyncNotifier<List<dynamic>> {
       }
       return [];
     } catch (e) {
-      print('Error fetching order history: $e');
+      debugPrint('Error fetching order history: $e');
       return [];
     }
   }

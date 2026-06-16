@@ -114,7 +114,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           height: 12,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         ),
-                        error: (_, __) => const Text(
+                        error: (_, _) => const Text(
                           '조회 실패',
                           style: TextStyle(fontSize: 13, color: Colors.red),
                         ),
@@ -305,7 +305,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.indigo.withOpacity(0.3),
+              color: Colors.indigo.withAlpha(77),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),
@@ -316,7 +316,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withAlpha(51),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.add, color: Colors.white, size: 32),

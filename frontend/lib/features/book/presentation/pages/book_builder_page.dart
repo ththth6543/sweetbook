@@ -388,7 +388,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                         );
                       },
                       errorBuilder: (context, error, stackTrace) {
-                        print("Cover image load error: $error");
+                        debugPrint("Cover image load error: $error");
                         return Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -514,7 +514,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
           border: Border.all(color: Colors.grey.shade200),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withAlpha(15),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -537,7 +537,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                         );
                       },
                       errorBuilder: (context, error, stackTrace) {
-                        print("Main grid page image error: $error");
+                        debugPrint("Main grid page image error: $error");
                         return const Center(
                           child: Icon(
                             Icons.error_outline,
@@ -560,8 +560,8 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                     colors: [
                       Colors.transparent,
                       Colors.transparent,
-                      Colors.black.withOpacity(0.1),
-                      Colors.black.withOpacity(0.3),
+                      Colors.black.withAlpha(26),
+                      Colors.black.withAlpha(77),
                     ],
                     stops: const [0.0, 0.4, 0.6, 1.0],
                   ),
@@ -573,7 +573,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                 color: Colors.transparent,
                 child: InkWell(
                   onTap: () => _editPage(page),
-                  splashColor: Colors.white.withOpacity(0.1),
+                  splashColor: Colors.white.withAlpha(26),
                 ),
               ),
             ),
@@ -583,7 +583,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                 decoration: BoxDecoration(
-                  color: Colors.indigo.withOpacity(0.9),
+                  color: Colors.indigo.withAlpha(230),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
@@ -626,7 +626,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                   Text(
                     page.templateName ?? '템플릿',
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.6),
+                      color: Colors.white.withAlpha(153),
                       fontSize: 8,
                     ),
                   ),
@@ -646,7 +646,7 @@ class _BookBuilderPageState extends ConsumerState<BookBuilderPage> {
                     child: Icon(
                       Icons.delete_outline,
                       size: 16,
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withAlpha(230),
                     ),
                   ),
                 ),
